@@ -15,14 +15,9 @@ if (typeof window === 'undefined' && typeof process !== 'undefined') {
   window.performance.now !== undefined
 ) {
   module.exports = window.performance.now.bind(window.performance)
-} else if (Date.now !== undefined) {
+} else {
   var start = Date.now()
   module.exports = function() {
     return Date.now() - start
-  }
-} else {
-  var start = new Date().getTime()
-  module.exports = function() {
-    return new Date().getTime() - start
   }
 }
